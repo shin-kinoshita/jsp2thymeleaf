@@ -1,0 +1,39 @@
+<html>
+ <head>
+  <title>
+   <c:foreach>
+    Tag Example
+   </c:foreach>
+  </title>
+ </head>
+ <body>
+  <p>
+   hello1
+  </p>
+  <p>
+   hello2
+  </p>
+  <div th:test="${count != null}">
+   <p>
+    count is not null
+   </p>
+  </div>
+  <c:foreach>
+   Item3
+  </c:foreach>
+  <c:foreach begin="1" end="5" var="i">
+   Item1
+   <c:out value="${i}">
+   </c:out>
+   <p>
+   </p>
+  </c:foreach>
+  <c:foreach begin="1" end="5" var="i">
+   Item2
+   <c:out value="${i}">
+   </c:out>
+   <p>
+   </p>
+  </c:foreach>
+ </body>
+</html>
