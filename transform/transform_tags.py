@@ -2,9 +2,11 @@ from bs4 import BeautifulSoup, Tag
 import re
 
 from replace_definition.if_def import IfDef
+from replace_definition.foreach_def import ForeachDef
 
 DEF_LIST = [
     IfDef(),
+    ForeachDef(),
 ]
 
 

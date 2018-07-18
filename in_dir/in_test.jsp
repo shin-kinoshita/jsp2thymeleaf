@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title><c:forEach> Tag Example</title>
+      <title> Tag Example</title>
    </head>
 
    <body>
@@ -9,12 +9,18 @@
       <c:if = test="${count != null}">
         <p>count is not null</p>
       </c:if>
+      <c:if = test="${count != null}">
+        <p>count2 is not null</p>
+      </c:if>
       <c:foreach>Item3</c:foreach>
       <c:forEach var = "i" begin = "1" end = "5">
          Item1 <c:out value = "${i}"/><p>
       </c:forEach>
       <c:forEach var = "i" begin = "1" end = "5">
          Item2 <c:out value = "${i}"/><p>
+      </c:forEach>
+      <c:forEach var="item" items="${list}">
+        <c:out value="${item}" />
       </c:forEach>
    </body>
 </html>

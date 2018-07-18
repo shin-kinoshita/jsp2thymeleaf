@@ -1,9 +1,7 @@
 <html>
  <head>
   <title>
-   <c:foreach>
-    Tag Example
-   </c:foreach>
+   Tag Example
   </title>
  </head>
  <body>
@@ -16,6 +14,11 @@
   <div th:test="${count != null}">
    <p>
     count is not null
+   </p>
+  </div>
+  <div th:test="${count != null}">
+   <p>
+    count2 is not null
    </p>
   </div>
   <c:foreach>
@@ -34,6 +37,10 @@
    </c:out>
    <p>
    </p>
+  </c:foreach>
+  <c:foreach items="${list}" var="item">
+   <c:out value="${item}">
+   </c:out>
   </c:foreach>
  </body>
 </html>
