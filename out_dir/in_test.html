@@ -11,19 +11,16 @@
   <p>
    hello2
   </p>
-  <div th:test="${count != null}">
+  <div th:if="${count != null}">
    <p>
     count is not null
    </p>
   </div>
-  <div th:test="${count != null}">
+  <div th:if="${count != null}">
    <p>
     count2 is not null
    </p>
   </div>
-  <c:foreach>
-   Item3
-  </c:foreach>
   <c:foreach begin="1" end="5" var="i">
    Item1
    <c:out value="${i}">
@@ -38,9 +35,18 @@
    <p>
    </p>
   </c:foreach>
-  <c:foreach items="${list}" var="item">
+  <c:foreach>
+   Item3
+  </c:foreach>
+  <div th:each="item : ${list}">
+   Item4
    <c:out value="${item}">
    </c:out>
-  </c:foreach>
+  </div>
+  <div th:if="${count != null}">
+   <p>
+    count3 is not null
+   </p>
+  </div>
  </body>
 </html>

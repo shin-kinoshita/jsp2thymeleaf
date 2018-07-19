@@ -5,8 +5,10 @@ from replace_definition.if_def import IfDef
 from replace_definition.foreach_def import ForeachDef
 
 DEF_LIST = [
-    IfDef(),
+    #IfDef(),
     ForeachDef(),
+    IfDef(),
+    #ForeachDef(),
 ]
 
 
@@ -21,5 +23,6 @@ def transform_tags(in_file, out_file):
         )
         for tag in tag_list:
             def_obj.operation(soup, tag)
+        soup = BeautifulSoup(soup.renderContents())
 
     out_file.write(soup.prettify("utf-8"))
