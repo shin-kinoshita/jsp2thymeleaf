@@ -1,11 +1,20 @@
 from bs4 import Tag
 
+from replace_definition.abs_def import AbsDef
 
-class IfDef:
+
+class IfDef(AbsDef):
     def __init__(self):
-        self.old_name = "c:if"
-        self.old_attrs = {}
-        self.old_text = None
+        super().__init__()
+
+    def search_name(self):
+        return "c:if"
+
+    def search_attrs(self):
+        return {}
+
+    def search_text(self):
+        return None
 
     def operation(self, parser, old_tag):
         test_val = old_tag.attrs["test"]

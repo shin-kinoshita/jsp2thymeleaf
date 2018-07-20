@@ -1,11 +1,20 @@
 from bs4 import Tag
 
+from replace_definition.abs_def import AbsDef
 
-class ForeachDef:
+
+class ForeachDef(AbsDef):
     def __init__(self):
-        self.old_name = "c:foreach"
-        self.old_attrs = {}
-        self.old_text = None
+        super().__init__()
+
+    def search_name(self):
+        return "c:foreach"
+
+    def search_attrs(self):
+        return {}
+
+    def search_text(self):
+        return None
 
     def operation(self, parser, old_tag):
         if "var" in old_tag.attrs.keys() and "items" in old_tag.attrs.keys():
