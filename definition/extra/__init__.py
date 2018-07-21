@@ -1,3 +1,4 @@
+from definition.extra.logic.basic.transform_el_logic import TransformElLogic
 from definition.extra.logic.basic.to_th_logic import ToThLogic
 from definition.extra.logic.basic.to_th_text_logic import ToThTextLogic
 
@@ -5,6 +6,7 @@ from definition.extra.operation.attribute_operation import AttrOperation
 from definition.extra.operation.string_operation import StringOperation
 
 logic_list = [
+    TransformElLogic(),
     ToThLogic(),
     ToThTextLogic(),
 ]
