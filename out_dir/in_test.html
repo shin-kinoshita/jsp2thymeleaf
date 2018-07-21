@@ -23,15 +23,15 @@
   </div>
   <div th:each="i : ${numbers.sequence(1, 5)}">
    Item1
-   <c:out value="${i}">
-   </c:out>
+   <div th:text="${i}">
+   </div>
    <p>
    </p>
   </div>
   <div th:each="i : ${numbers.sequence(1, 5)}">
    Item2
-   <c:out value="${i}">
-   </c:out>
+   <div th:text="${i}">
+   </div>
    <p>
    </p>
   </div>
@@ -40,8 +40,8 @@
   </c:foreach>
   <div th:each="item : ${list}">
    Item4
-   <c:out value="${item}">
-   </c:out>
+   <div th:text="${item}">
+   </div>
   </div>
   <div th:if="${count != null}">
    <p>

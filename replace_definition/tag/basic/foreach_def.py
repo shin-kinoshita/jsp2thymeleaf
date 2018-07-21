@@ -1,12 +1,9 @@
 from bs4 import Tag
 
-from replace_definition.abs_def import AbsDef
+from replace_definition.tag.abs_tag_def import AbsTagDef
 
 
-class ForeachDef(AbsDef):
-    def __init__(self):
-        super().__init__()
-
+class ForeachDef(AbsTagDef):
     def search_name(self):
         return "c:foreach"
 

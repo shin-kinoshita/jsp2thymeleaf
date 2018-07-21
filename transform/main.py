@@ -1,4 +1,4 @@
-from transform.transform_tags import transform_tags
+from transform import transform
 import os
 import glob
 
@@ -12,7 +12,7 @@ def main():
         out_path = os.path.splitext(out_path)[0] + ".html"
         with open(in_path, 'r') as in_f:
             with open(out_path, 'wb') as out_f:
-                transform_tags(in_f, out_f)
+                transform(in_f, out_f)
 
 
 def import_path_list(in_dir):
