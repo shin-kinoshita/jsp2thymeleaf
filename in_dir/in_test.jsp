@@ -4,7 +4,7 @@
    </head>
 
    <body>
-      <p>hello1</p>
+      <p>${hello1}</p>
       <p>hello2</p>
       <c:if test="${count != null}">
         <p>count is not null</p>

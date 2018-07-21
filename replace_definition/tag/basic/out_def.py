@@ -1,16 +1,16 @@
 from bs4 import Tag
 
-from replace_definition.tag.abs_tag_def import AbsTagDef
+from replace_definition.abs_def import AbsDef
 
 
-class OutDef(AbsTagDef):
+class OutDef(AbsDef):
     def search_name(self):
         return "c:out"
 
     def search_attrs(self):
         return {}
 
-    def search_text(self):
+    def search_string(self):
         return None
 
     def operation(self, parser, old_tag):
