@@ -1,9 +1,9 @@
 from bs4 import Tag
 
-from replace_definition.abs_def import AbsDef
+from definition.tag.abs_tag_def import AbsTagDef
 
 
-class ForeachDef(AbsDef):
+class ForeachDef(AbsTagDef):
     def search_name(self):
         return "c:foreach"
 
@@ -13,7 +13,7 @@ class ForeachDef(AbsDef):
     def search_string(self):
         return None
 
-    def operation(self, parser, old_tag):
+    def operate(self, parser, old_tag):
         if old_tag.has_attr("var") and old_tag.has_attr("items"):
             ForeachDef.iterate_list(parser, old_tag)
 

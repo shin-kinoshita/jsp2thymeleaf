@@ -7,7 +7,9 @@
       <p>${hello1}</p>
       <p value=${test}>hello2</p>
       <c:if test="${count != null}">
-        <p>count is not null</p>
+        <c:if test="${count != null}">
+          <p>count is not null</p>
+        </c:if>
       </c:if>
       <c:if test="${count != null}">
         <p>count2 is not null</p>

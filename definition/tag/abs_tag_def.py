@@ -3,7 +3,7 @@ import re
 from abc import ABCMeta, abstractmethod
 
 
-class AbsDef(metaclass=ABCMeta):
+class AbsTagDef(metaclass=ABCMeta):
     def __init__(self):
         pass
 
@@ -33,5 +33,5 @@ class AbsDef(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
-    def operation(self, parser, old_tag):
+    def operate(self, parser, old_tag):
         raise NotImplementedError

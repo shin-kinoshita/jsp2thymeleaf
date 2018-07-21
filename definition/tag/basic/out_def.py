@@ -1,9 +1,9 @@
 from bs4 import Tag
 
-from replace_definition.abs_def import AbsDef
+from definition.tag.abs_tag_def import AbsTagDef
 
 
-class OutDef(AbsDef):
+class OutDef(AbsTagDef):
     def search_name(self):
         return "c:out"
 
@@ -13,7 +13,7 @@ class OutDef(AbsDef):
     def search_string(self):
         return None
 
-    def operation(self, parser, old_tag):
+    def operate(self, parser, old_tag):
         keys = old_tag.attrs.keys()
 
         if "value" in keys:

@@ -1,9 +1,9 @@
 from bs4 import Tag
 
-from replace_definition.abs_def import AbsDef
+from definition.tag.abs_tag_def import AbsTagDef
 
 
-class IfDef(AbsDef):
+class IfDef(AbsTagDef):
     def search_name(self):
         return "c:if"
 
@@ -13,7 +13,7 @@ class IfDef(AbsDef):
     def search_string(self):
         return None
 
-    def operation(self, parser, old_tag):
+    def operate(self, parser, old_tag):
         if old_tag.has_attr("test"):
             test_val = old_tag["test"]
             new_tag = Tag(parser, name="div", attrs=[("th:if", test_val)])
