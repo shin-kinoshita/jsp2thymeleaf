@@ -17,8 +17,11 @@ class IfDef(AbsDef):
         return None
 
     def operation(self, parser, old_tag):
-        test_val = old_tag.attrs["test"]
-        new_tag = Tag(parser, name="div", attrs=[("th:if", test_val)])
-        new_tag.contents = old_tag.contents
-        old_tag.replaceWith(new_tag)
+        keys = old_tag.attrs.keys()
+
+        if "test" in keys:
+            test_val = old_tag.attrs["test"]
+            new_tag = Tag(parser, name="div", attrs=[("th:if", test_val)])
+            new_tag.contents = old_tag.contents
+            old_tag.replaceWith(new_tag)
 

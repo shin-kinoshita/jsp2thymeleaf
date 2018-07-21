@@ -21,20 +21,20 @@
     count2 is not null
    </p>
   </div>
-  <c:foreach begin="1" end="5" var="i">
+  <div th:each="i : ${numbers.sequence(1, 5)}">
    Item1
    <c:out value="${i}">
    </c:out>
    <p>
    </p>
-  </c:foreach>
-  <c:foreach begin="1" end="5" var="i">
+  </div>
+  <div th:each="i : ${numbers.sequence(1, 5)}">
    Item2
    <c:out value="${i}">
    </c:out>
    <p>
    </p>
-  </c:foreach>
+  </div>
   <c:foreach>
    Item3
   </c:foreach>
