@@ -6,7 +6,7 @@
    <body>
       <p>${f:h(evaluation)}</p>
       <p id="${f:h(evaluation)}"></p>
-      <p id="${f:h(evaluation)}">${f:h(evaluation)}</p>
+      <p id="${f:h(evaluation)}">${f:h(evaluation)} is good</p>
       <p>${hello1}</p>
       <p value=${test}>hello2</p>
       <c:if test="${count != null}">
@@ -31,5 +31,11 @@
       <c:if test="${count != null}">
         <p>count3 is not null</p>
       </c:if>
+      <c:set var="data" value="this is test">
+        <p>${data}</p>
+      </c:set>
+      <c:set var="data" value="123">
+        <p>${data}</p>
+      </c:set>
    </body>
 </html>

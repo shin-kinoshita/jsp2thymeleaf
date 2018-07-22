@@ -12,7 +12,7 @@
   <p th:id="${evaluation}">
   </p>
   <p th:id="${evaluation}">
-   <div th:text="${evaluation}">
+   <div th:text="${evaluation} is good">
    </div>
   </p>
   <p>
@@ -59,6 +59,18 @@
   <div th:if="${count != null}">
    <p>
     count3 is not null
+   </p>
+  </div>
+  <div th:with="data='this is test'">
+   <p>
+    <div th:text="${data}">
+    </div>
+   </p>
+  </div>
+  <div th:with="data=123">
+   <p>
+    <div th:text="${data}">
+    </div>
    </p>
   </div>
  </body>
