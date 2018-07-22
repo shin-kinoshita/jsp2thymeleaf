@@ -1,5 +1,7 @@
 import re
 
+from bs4 import NavigableString
+
 from definition.extra.logic.abs_logic import AbsLogic
 
 
@@ -12,8 +14,8 @@ class TransformElLogic(AbsLogic):
         tag[attr_key] = self.transform_f_h(attr_val)
 
     def string_operation(self, parser, tag, string):
-        string.replace(string, self.transform_f_h(string))
+        string.replace_with(self.transform_f_h(string))
 
     def transform_f_h(self, text):
-        return re.sub(r"f:h\((.*)\)", r"\1", text)
+        return re.sub(r"\$\{f:h\((.*)\)\}", r"${\1}", text)
 

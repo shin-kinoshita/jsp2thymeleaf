@@ -8,10 +8,9 @@ class StringOperation(AbsOperation):
         super(StringOperation, self).__init__(logic_list)
 
     def operate(self, parser):
-        string_list = parser.find_all(string=True)
-
-        for string in string_list:
-            for logic in self.logic_list:
+        for logic in self.logic_list:
+            string_list = parser.find_all(string=True)
+            for string in string_list:
                 logic.string_operation(parser, string.parent, string)
-        parser = BeautifulSoup(parser.renderContents())
+            parser = BeautifulSoup(parser.renderContents())
         return parser
