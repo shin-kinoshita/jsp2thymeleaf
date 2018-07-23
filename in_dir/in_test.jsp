@@ -1,4 +1,5 @@
 <html>
+   <%-- this is comment --%>
    <head>
       <title> Tag Example</title>
    </head>
