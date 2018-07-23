@@ -26,54 +26,54 @@
   <p th:value="${test}">
    hello2
   </p>
-  <div th:if="${count != null}">
-   <div th:if="${count != null}">
+  <c:if th:test="${count != null}">
+   <c:if th:test="${count != null}">
     <p>
      count is not null
     </p>
-   </div>
-  </div>
-  <div th:if="${count != null}">
+   </c:if>
+  </c:if>
+  <c:if th:test="${count != null}">
    <p>
     count2 is not null
    </p>
-  </div>
-  <div th:each="i : ${numbers.sequence(1, 5)}">
+  </c:if>
+  <c:foreach begin="1" end="5" var="i">
    Item1
-   <div th:text="${i}">
-   </div>
+   <c:out th:value="${i}">
+   </c:out>
    <p>
    </p>
-  </div>
-  <div th:each="i : ${numbers.sequence(1, 5)}">
+  </c:foreach>
+  <c:foreach begin="1" end="5" var="i">
    Item2
-   <div th:text="${i}">
-   </div>
+   <c:out th:value="${i}">
+   </c:out>
    <p>
    </p>
-  </div>
+  </c:foreach>
   <c:foreach>
    Item3
   </c:foreach>
-  <div th:each="item : ${list}">
+  <c:foreach th:items="${list}" var="item">
    Item4
-   <div th:text="${item}">
-   </div>
-  </div>
-  <div th:if="${count != null}">
+   <c:out th:value="${item}">
+   </c:out>
+  </c:foreach>
+  <c:if th:test="${count != null}">
    <p>
     count3 is not null
    </p>
-  </div>
-  <div th:with="data='this is test'">
+  </c:if>
+  <c:set value="this is test" var="data">
    <p>
     [[${data}]]!
    </p>
-  </div>
-  <div th:with="data=123">
+  </c:set>
+  <c:set value="123" var="data">
    <p>
     [[${data}]]!
    </p>
-  </div>
+  </c:set>
  </body>
 </html>
