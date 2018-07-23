@@ -7,18 +7,21 @@
  </head>
  <body>
   <p>
-   <div th:text="${evaluation}">
-   </div>
-  </p>
-  <p th:id="${evaluation}">
-  </p>
-  <p th:id="${evaluation}">
-   <div th:text="${evaluation} is good">
-   </div>
+   your evaluation is [[${evaluation}]]!
   </p>
   <p>
-   <div th:text="${hello1}">
-   </div>
+   your evaluation is [[${evaluation}]]!
+  </p>
+  <p>
+   [[${evaluation}]]!
+  </p>
+  <p th:id="${evaluation}">
+  </p>
+  <p th:id="${evaluation}">
+   [[${evaluation}]]! is good
+  </p>
+  <p>
+   [[${hello1}]]!
   </p>
   <p th:value="${test}">
    hello2
@@ -64,14 +67,12 @@
   </div>
   <div th:with="data='this is test'">
    <p>
-    <div th:text="${data}">
-    </div>
+    [[${data}]]!
    </p>
   </div>
   <div th:with="data=123">
    <p>
-    <div th:text="${data}">
-    </div>
+    [[${data}]]!
    </p>
   </div>
  </body>

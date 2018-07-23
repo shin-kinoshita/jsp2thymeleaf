@@ -1,6 +1,6 @@
 from definition.extra.logic.basic.transform_el_logic import TransformElLogic
 from definition.extra.logic.basic.to_th_logic import ToThLogic
-from definition.extra.logic.basic.to_th_text_logic import ToThTextLogic
+from definition.extra.logic.basic.to_inline_logic import ToInlineLogic
 
 from definition.extra.operation.attr_operation import AttrOperation
 from definition.extra.operation.string_operation import StringOperation
@@ -8,7 +8,7 @@ from definition.extra.operation.string_operation import StringOperation
 logic_list = [
     TransformElLogic(),
     ToThLogic(),
-    ToThTextLogic(),
+    ToInlineLogic(),
 ]
 
 attr_logic_list = list()
