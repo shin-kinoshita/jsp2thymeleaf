@@ -1,15 +1,10 @@
-from definition.extra.logic.basic.transform_el_logic import TransformElLogic
-from definition.extra.logic.basic.to_th_logic import ToThLogic
-from definition.extra.logic.basic.to_inline_logic import ToInlineLogic
+from .logic.basic import logic_list as basic_logic_list
+from .logic.custom import logic_list as custom_logic_list
 
 from definition.extra.operation.attr_operation import AttrOperation
 from definition.extra.operation.string_operation import StringOperation
 
-logic_list = [
-    TransformElLogic(),
-    ToThLogic(),
-    ToInlineLogic(),
-]
+logic_list = basic_logic_list + custom_logic_list
 
 attr_logic_list = list()
 string_logic_list = list()
