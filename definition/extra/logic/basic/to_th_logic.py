@@ -11,10 +11,10 @@ class ToThLogic(AbsLogic):
         attr_val = tag[attr_key]
         if isinstance(attr_val, list):
             for val in attr_val:
-                if re.match("\$\{.*\}", val) and not attr_key.startswith("th:"):
+                if re.match(".*\$\{.*\}.*", val) and not attr_key.startswith("th:"):
                     self.execute(tag, attr_key)
         else:
-            if re.match("\$\{.*\}", attr_val) and not attr_key.startswith("th:"):
+            if re.match(".*\$\{.*\}.*", attr_val) and not attr_key.startswith("th:"):
                 self.execute(tag, attr_key)
 
     def execute(self, tag, attr_key):

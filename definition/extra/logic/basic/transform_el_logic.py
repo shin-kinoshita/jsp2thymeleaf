@@ -19,5 +19,5 @@ class TransformElLogic(AbsLogic):
         string.replace_with(self.transform_f_h(string))
 
     def transform_f_h(self, text):
-        return re.sub(r"\$\{f:h\((.*)\)\}", r"${\1}", text)
+        return re.sub(r"\$\{(.*)f:h\((.*)\)(.*)\}", r"${\1\2\3}", text)
 
