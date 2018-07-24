@@ -13,9 +13,7 @@ class AttrOperation(AbsOperation):
             for tag in tag_list:
                 attr_key_list = tag.attrs.keys()
                 for attr_key in attr_key_list:
-                    # if attr_key == "class":
-                    #     attr_key = "class_"
                     if logic.enable_attr:
                         logic.attr_operation(parser, tag, attr_key)
-            parser = BeautifulSoup(parser.renderContents())
+            parser = BeautifulSoup(parser.renderContents(), "html.parser")
         return parser

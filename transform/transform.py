@@ -22,7 +22,7 @@ def transform_tag(parser):
         )
         for tag in tag_list:
             tag_def.operate(tag_def, parser, tag)
-        parser = BeautifulSoup(parser.renderContents())
+        parser = BeautifulSoup(parser.renderContents(), "html.parser")
     return parser
 
 

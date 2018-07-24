@@ -12,5 +12,5 @@ class StringOperation(AbsOperation):
             string_list = parser.find_all(string=True)
             for string in string_list:
                 logic.string_operation(parser, string.parent, string)
-            parser = BeautifulSoup(parser.renderContents())
+            parser = BeautifulSoup(parser.renderContents(), "html.parser")
         return parser
