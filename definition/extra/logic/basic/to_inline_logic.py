@@ -1,8 +1,8 @@
 import re
 
-from bs4 import Tag, NavigableString
+from bs4 import NavigableString
 
-from definition.extra.logic.abs_logic import AbsLogic
+from .abs_logic import AbsLogic
 
 
 class ToInlineLogic(AbsLogic):

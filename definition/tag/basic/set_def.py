@@ -2,7 +2,7 @@ import re
 
 from bs4 import Tag
 
-from definition.tag.basic.abs_tag_def import AbsTagDef
+from .abs_tag_def import AbsTagDef
 
 
 class SetDef(AbsTagDef):

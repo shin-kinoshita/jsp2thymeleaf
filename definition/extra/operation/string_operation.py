@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from definition.extra.operation.abs_operation import AbsOperation
+from .abs_operation import AbsOperation
 
 
 class StringOperation(AbsOperation):
