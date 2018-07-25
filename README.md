@@ -1,4 +1,5 @@
 # jsp2thymeleaf
+This reposi
 
 ## Installation
 Scripts in the repository is just adaptive with python3.
@@ -12,7 +13,6 @@ $ pip install -r requirements.txt
 Follow next instructions step by step.
 1. Set your jsp files
   What you have to do at first is to set your all jsp files in `in_dir` directory.
-
   You can place them with nested directories as following example.
   ```
   in_dir/
@@ -33,7 +33,6 @@ Follow next instructions step by step.
 
 3. Check generated thymeleaf html files
   You can find corresponding thymeleaf html files in `out_dir` directory.
-
   In the case of above example, your `out_dir` directory structure is like below.
   ```
   out_dir/
@@ -43,3 +42,6 @@ Follow next instructions step by step.
       └── nested_nested_dir
           └── in_test.html
   ```
+
+## Transformation of custom tags
+
