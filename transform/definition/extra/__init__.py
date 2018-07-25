@@ -1,8 +1,8 @@
 from .logic.basic import logic_list as basic_logic_list
 from .logic.custom import logic_list as custom_logic_list
 
-from definition.extra.operation.attr_operation import AttrOperation
-from definition.extra.operation.string_operation import StringOperation
+from .operation.attr_operation import AttrOperation
+from .operation.string_operation import StringOperation
 
 logic_list = basic_logic_list + custom_logic_list
 

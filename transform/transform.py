@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
-from definition.extra import extra_operation_list
-from definition.tag import tag_def_list
+from .definition.extra import extra_operation_list
+from .definition.tag import tag_def_list
 
 
 def transform(in_file, out_file):
