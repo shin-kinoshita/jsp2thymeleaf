@@ -10,9 +10,8 @@ class ToInlineLogic(AbsLogic):
         super(ToInlineLogic, self).__init__(enable_attr=False, enable_string=True)
 
     def string_operation(self, parser, tag, string):
-        if not re.match(".*\$\{.*\}.*", string):
-            return
-        self.execute(string)
+        if re.match(".*\$\{.*\}.*", string):
+            self.execute(string)
 
     def execute(self, string):
         new_string = re.sub(r"\$\{(.*)\}", r"[[${\1}]]!", string)

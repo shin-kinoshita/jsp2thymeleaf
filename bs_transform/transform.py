@@ -6,7 +6,6 @@ from .definition.tag import tag_def_list
 
 def transform(in_file, out_file):
     soup = BeautifulSoup(in_file, "html.parser")
-
     soup = transform_tag(soup)
     soup = transform_extra(soup)
 

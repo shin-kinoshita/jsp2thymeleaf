@@ -164,7 +164,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
-transform/definition/extra/logic/custom/
-transform/definition/tag/custom/
+bs_transform/definition/extra/logic/custom/
+bs_transform/definition/tag/custom/
 *.jsp
 *.html
