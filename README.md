@@ -1,5 +1,4 @@
 # jsp2thymeleaf
-This reposi
 
 ## Installation
 Scripts in the repository is just adaptive with python3.
@@ -42,6 +41,4 @@ Follow next instructions step by step.
       └── nested_nested_dir
           └── in_test.html
   ```
-
-## Transformation of custom tags
 
