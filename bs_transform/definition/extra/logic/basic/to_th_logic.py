@@ -13,6 +13,7 @@ class ToThLogic(AbsLogic):
             for val in attr_val:
                 if re.match(".*\$\{.*\}.*", val) and not attr_key.startswith("th:"):
                     self.execute(tag, attr_key)
+                    break
         else:
             if re.match(".*\$\{.*\}.*", attr_val) and not attr_key.startswith("th:"):
                 self.execute(tag, attr_key)

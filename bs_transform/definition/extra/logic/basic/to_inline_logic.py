@@ -14,5 +14,5 @@ class ToInlineLogic(AbsLogic):
             self.execute(string)
 
     def execute(self, string):
-        new_string = re.sub(r"\$\{(.*)\}", r"[[${\1}]]!", string)
+        new_string = re.sub(r"\$\{(.*)\}", r"[[${\1}]]", string)
         string.replace_with(NavigableString(new_string))
