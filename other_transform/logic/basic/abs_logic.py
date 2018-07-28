@@ -6,5 +6,5 @@ class AbsLogic(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def operation(self, in_file, out_file):
+    def operation(self, in_contents):
         raise NotImplementedError

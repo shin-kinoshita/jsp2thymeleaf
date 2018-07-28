@@ -1,7 +1,5 @@
 import re
 
-from bs4 import NavigableString
-
 from .abs_logic import AbsLogic
 
 

@@ -166,5 +166,6 @@ fabric.properties
 
 bs_transform/definition/extra/logic/custom/
 bs_transform/definition/tag/custom/
+other_transform/logic/custom/
 *.jsp
 *.html

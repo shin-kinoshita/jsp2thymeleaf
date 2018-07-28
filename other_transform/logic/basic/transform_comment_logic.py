@@ -1,6 +1,6 @@
 import re
 
-from other_transform.logic.abs_logic import AbsLogic
+from other_transform.logic.basic.abs_logic import AbsLogic
 
 
 class TransformCommentLogic(AbsLogic):
