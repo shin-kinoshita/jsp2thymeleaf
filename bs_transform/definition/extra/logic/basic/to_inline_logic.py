@@ -10,6 +10,8 @@ class ToInlineLogic(AbsLogic):
         super(ToInlineLogic, self).__init__(enable_attr=False, enable_string=True)
 
     def string_operation(self, parser, tag, string):
+        if re.match(r"(.*)\|(.*)\|(.*)", string, flags=re.DOTALL):
+            return
         if re.match(r"(.*)\$\{(.*)\}(.*)", string, flags=re.DOTALL):
             self.execute(string)
 
