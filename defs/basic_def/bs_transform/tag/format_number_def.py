@@ -2,6 +2,7 @@ import re
 
 from bs4 import NavigableString
 
+from common.comment_list import CommentList
 from .abs_tag_def import AbsTagDef
 
 
@@ -16,6 +17,10 @@ class FormatNumberDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
+        comment_list = CommentList(
+            header="jsp2thymeleaf comment begin: fmt:formatNumber",
+            footer="jsp2thymeleaf comment end: fmt:formatNumber"
+        )
         if old_tag.has_attr("value") and old_tag.has_attr("pattern"):
             value_val = old_tag["value"]
             pattern_val = old_tag["pattern"]

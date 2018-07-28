@@ -1,5 +1,6 @@
 from bs4 import Tag
 
+from common.comment_list import CommentList
 from .abs_tag_def import AbsTagDef
 
 
@@ -14,35 +15,35 @@ class ForeachDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
+        comment_list = CommentList(
+            header="jsp2thymeleaf comment begin: foreach",
+            footer="jsp2thymeleaf comment end: foreach"
+        )
         if old_tag.has_attr("var") and old_tag.has_attr("items"):
-            ForeachDef.iterate_list(parser, old_tag)
+            self.iterate_list(parser, old_tag, comment_list)
+        elif old_tag.has_attr("var") and old_tag.has_attr("begin") and old_tag.has_attr("end"):
+            self.iterate_number(parser, old_tag, comment_list)
 
-        if old_tag.has_attr("var") and old_tag.has_attr("begin") and old_tag.has_attr("end"):
-            ForeachDef.iterate_number(parser, old_tag)
-
-    @staticmethod
-    def iterate_list(parser, old_tag):
+    def iterate_list(self, parser, old_tag, comment_list):
         var_val = old_tag["var"]
         items_val = old_tag["items"]
 
         new_tag = Tag(parser, name="div", attrs=[("th:each", "{0} : {1}".format(var_val, items_val))])
         new_tag.contents = old_tag.contents
 
-        old_tag.replaceWith(new_tag)
+        self.replace(old_tag, new_tag, comment_list)
 
-    @staticmethod
-    def iterate_number(parser, old_tag):
+    def iterate_number(self, parser, old_tag, comment_list):
         var_val = old_tag["var"]
         begin_val = old_tag["begin"]
         end_val = old_tag["end"]
 
         if old_tag.has_attr("step"):
             step_val = old_tag["step"]
-            attrs = [
-                ("th:each", "{0} : ${{numbers.sequence({1}, {2}, {3})}}".format(var_val, begin_val, end_val, step_val))]
+            attrs = {"th:each": "{0} : ${{numbers.sequence({1}, {2}, {3})}}".format(var_val, begin_val, end_val, step_val)}
         else:
-            attrs = [("th:each", "{0} : ${{numbers.sequence({1}, {2})}}".format(var_val, begin_val, end_val))]
+            attrs = {"th:each": "{0} : ${{numbers.sequence({1}, {2})}}".format(var_val, begin_val, end_val)}
         new_tag = Tag(parser, name="div", attrs=attrs)
         new_tag.contents = old_tag.contents
 
-        old_tag.replaceWith(new_tag)
+        self.replace(old_tag, new_tag, comment_list)
