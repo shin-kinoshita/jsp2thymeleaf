@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bs_transform/definition/tag/custom/jsp2thymeleaf_brtag" vcs="Git" />
   </component>
 </project>
