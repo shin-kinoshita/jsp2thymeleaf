@@ -8,17 +8,17 @@ class AbsTagDef(metaclass=ABCMeta):
         pass
 
     def get_search_name(self):
-        if self.search_name(self) is None:
+        if self.search_name() is None:
             return None
-        return re.compile(self.search_name(self))
+        return re.compile(self.search_name())
 
     def get_search_attrs(self):
-        return self.search_attrs(self)
+        return self.search_attrs()
 
     def get_search_string(self):
-        if self.search_string(self) is None:
+        if self.search_string() is None:
             return None
-        return re.compile(self.search_string(self))
+        return re.compile(self.search_string())
 
     @abstractmethod
     def search_name(self):

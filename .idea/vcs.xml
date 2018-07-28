@@ -3,5 +3,11 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/bs_transform/definition/tag/custom/jsp2thymeleaf_brtag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/def/jsp2thymeleaf_brframework_def" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/definition/basic/bs_transform/tag/custom/jsp2thymeleaf_brtag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/definition/jsp2thymeleaf_brframework_def" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/definition/jsp2thymeleaf_brtag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/definition/tag/custom/jsp2thymeleaf_brtag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/defs/jsp2thymeleaf_brframework_def" vcs="Git" />
   </component>
 </project>

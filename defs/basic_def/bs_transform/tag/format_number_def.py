@@ -1,6 +1,6 @@
 import re
 
-from bs4 import Tag, NavigableString
+from bs4 import NavigableString
 
 from .abs_tag_def import AbsTagDef
 

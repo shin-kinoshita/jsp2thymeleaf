@@ -164,6 +164,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+defs/
 bs_transform/definition/extra/logic/custom/
 bs_transform/definition/tag/custom/
 other_transform/logic/custom/
