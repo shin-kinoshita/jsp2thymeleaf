@@ -10,6 +10,9 @@ class EditLinkingLiteralLogic(AbsLogic):
         super(EditLinkingLiteralLogic, self).__init__(enable_attr=True, enable_string=False)
 
     def attr_operation(self, parser, tag, attr_key):
+        if attr_key == "th:each":
+            return
+
         attr_val = tag[attr_key]
         if isinstance(attr_val, list):
             new_attr_val = list()
