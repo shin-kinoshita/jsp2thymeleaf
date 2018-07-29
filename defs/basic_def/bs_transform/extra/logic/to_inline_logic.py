@@ -1,6 +1,6 @@
 import re
 
-from bs4 import NavigableString
+from bs4 import NavigableString, Comment
 
 from .abs_logic import AbsLogic
 
@@ -10,6 +10,8 @@ class ToInlineLogic(AbsLogic):
         super(ToInlineLogic, self).__init__(enable_attr=False, enable_string=True)
 
     def string_operation(self, parser, tag, string):
+        if type(string) is Comment:
+            return
         if re.match(r"(.*)\|(.*)\|(.*)", string, flags=re.DOTALL):
             return
         if re.match(r"(.*)\$\{(.*)\}(.*)", string, flags=re.DOTALL):

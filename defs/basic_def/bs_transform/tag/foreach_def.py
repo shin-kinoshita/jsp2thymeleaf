@@ -1,6 +1,6 @@
 from bs4 import Tag
 
-from common.comment_list import CommentList
+from common.comment.comment_object import CommentObject
 from .abs_tag_def import AbsTagDef
 
 
@@ -15,25 +15,24 @@ class ForeachDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
-        comment_list = CommentList(
-            header="jsp2thymeleaf comment begin: foreach",
-            footer="jsp2thymeleaf comment end: foreach"
-        )
-        if old_tag.has_attr("var") and old_tag.has_attr("items"):
-            self.iterate_list(parser, old_tag, comment_list)
-        elif old_tag.has_attr("var") and old_tag.has_attr("begin") and old_tag.has_attr("end"):
-            self.iterate_number(parser, old_tag, comment_list)
+        comment_object = CommentObject(title="c:foreach")
+        comment_object.set_old_tag(old_tag)
 
-    def iterate_list(self, parser, old_tag, comment_list):
+        if old_tag.has_attr("var") and old_tag.has_attr("items"):
+            self.operate_var_items(parser, old_tag, comment_object)
+        elif old_tag.has_attr("var") and old_tag.has_attr("begin") and old_tag.has_attr("end"):
+            self.operate_var_begin_end(parser, old_tag, comment_object)
+
+    def operate_var_items(self, parser, old_tag, comment_object):
         var_val = old_tag["var"]
         items_val = old_tag["items"]
 
         new_tag = Tag(parser, name="div", attrs=[("th:each", "{0} : {1}".format(var_val, items_val))])
         new_tag.contents = old_tag.contents
 
-        self.replace(old_tag, new_tag, comment_list)
+        self.replace(old_tag, new_tag, comment_object)
 
-    def iterate_number(self, parser, old_tag, comment_list):
+    def operate_var_begin_end(self, parser, old_tag, comment_object):
         var_val = old_tag["var"]
         begin_val = old_tag["begin"]
         end_val = old_tag["end"]
@@ -46,4 +45,4 @@ class ForeachDef(AbsTagDef):
         new_tag = Tag(parser, name="div", attrs=attrs)
         new_tag.contents = old_tag.contents
 
-        self.replace(old_tag, new_tag, comment_list)
+        self.replace(old_tag, new_tag, comment_object)
