@@ -2,6 +2,7 @@ import re
 
 from bs4 import NavigableString, Comment
 
+from common.comment.comment_object import CommentObject
 from .abs_logic import AbsLogic
 
 
@@ -10,7 +11,7 @@ class ToInlineLogic(AbsLogic):
         super(ToInlineLogic, self).__init__(enable_attr=False, enable_string=True)
 
     def string_operation(self, parser, tag, string):
-        if type(string) is Comment:
+        if isinstance(string, Comment):
             return
         if re.match(r"(.*)\|(.*)\|(.*)", string, flags=re.DOTALL):
             return
@@ -18,5 +19,8 @@ class ToInlineLogic(AbsLogic):
             self.execute(string)
 
     def execute(self, string):
-        new_string = re.sub(r"(.*)\$\{(.*)\}(.*)", r"\1[[${\2}]]\3", string, flags=re.DOTALL)
-        string.replace_with(NavigableString(new_string))
+        comment_object = CommentObject(title="Transform text with inline notation")
+        comment_object.set_old_string(string)
+
+        new_string = NavigableString(re.sub(r"(.*)\$\{(.*)\}(.*)", r"\1[[${\2}]]\3", string, flags=re.DOTALL))
+        self.replace_string(string, new_string, comment_object)

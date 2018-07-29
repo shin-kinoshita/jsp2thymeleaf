@@ -48,4 +48,4 @@ class FormatNumberDef(AbsTagDef):
             decimal_count = pattern_val.split(".")[1].count("0")
             new_string = NavigableString("${{#numbers.formatInteger({0}, {1}, {2})}}".format(value_val, integer_count, decimal_count))
 
-        self.replace(old_tag, new_string, comment_object)
+        self.replace_tag(old_tag, new_string, comment_object)

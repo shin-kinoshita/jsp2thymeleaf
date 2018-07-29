@@ -27,4 +27,4 @@ class IfDef(AbsTagDef):
         new_tag = Tag(parser, name="div", attrs=[("th:if", test_val)])
         new_tag.contents = old_tag.contents
 
-        self.replace(old_tag, new_tag, comment_object)
+        self.replace_tag(old_tag, new_tag, comment_object)

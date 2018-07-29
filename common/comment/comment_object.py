@@ -26,13 +26,11 @@ class CommentObject:
         self.footer = Comment(self.format_comment(footer, True))
 
     def set_old_tag(self, old_tag):
-        old_tag_title = CommentTemplate.old_tag_template("")
-        _old_tag = Tag(name=old_tag.name, attrs=old_tag.attrs).__str__()
-        self.add_comment(old_tag_title, _old_tag, with_todo=True)
-        #self.add_comment(old_tag_title, Tag(name=old_tag.name, attrs=old_tag.attrs).__str__(), with_todo=True)
+        old_tag_title = CommentTemplate.base_tag_template("")
+        self.add_comment(old_tag_title, Tag(name=old_tag.name, attrs=old_tag.attrs).__str__(), with_todo=True)
 
     def set_old_string(self, old_string):
-        old_tag_title = CommentTemplate.old_tag_template("")
+        old_tag_title = CommentTemplate.base_string_template("")
         self.add_comment(old_tag_title, old_string, with_todo=True)
 
     def add_comment(self, title, comment, with_todo=True):

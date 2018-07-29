@@ -1,5 +1,6 @@
 import re
 
+from common.comment.comment_object import CommentObject
 from .abs_logic import AbsLogic
 
 
@@ -19,5 +20,7 @@ class ToThLogic(AbsLogic):
                 self.execute(tag, attr_key)
 
     def execute(self, tag, attr_key):
-        attr_val = tag.attrs.pop(attr_key)
-        tag.attrs["th:" + attr_key] = attr_val
+        comment_object = CommentObject(title="Transform attribute key to thymeleaf one")
+        comment_object.set_old_tag(tag)
+
+        self.replace_attr_key(tag, attr_key, "th:" + attr_key, comment_object)

@@ -36,7 +36,7 @@ class AbsTagDef(metaclass=ABCMeta):
     def operate(self, parser, old_tag):
         raise NotImplementedError
 
-    def replace(self, old_tag, new_tag, comment_object):
+    def replace_tag(self, old_tag, new_tag, comment_object):
         old_tag.replace_with(new_tag)
         if comment_object is not None:
             for comment in comment_object:

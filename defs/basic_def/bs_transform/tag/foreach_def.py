@@ -30,7 +30,7 @@ class ForeachDef(AbsTagDef):
         new_tag = Tag(parser, name="div", attrs=[("th:each", "{0} : {1}".format(var_val, items_val))])
         new_tag.contents = old_tag.contents
 
-        self.replace(old_tag, new_tag, comment_object)
+        self.replace_tag(old_tag, new_tag, comment_object)
 
     def operate_var_begin_end(self, parser, old_tag, comment_object):
         var_val = old_tag["var"]
@@ -45,4 +45,4 @@ class ForeachDef(AbsTagDef):
         new_tag = Tag(parser, name="div", attrs=attrs)
         new_tag.contents = old_tag.contents
 
-        self.replace(old_tag, new_tag, comment_object)
+        self.replace_tag(old_tag, new_tag, comment_object)

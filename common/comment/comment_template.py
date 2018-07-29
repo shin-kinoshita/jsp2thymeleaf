@@ -21,9 +21,9 @@ class CommentTemplate:
         return "<transformation unreliable> {0}".format(message)
 
     @staticmethod
-    def old_tag_template(message):
-        return "<old tag> {0}".format(message)
+    def base_tag_template(message):
+        return "<base tag> {0}".format(message)
 
     @staticmethod
-    def old_string_template(message):
-        return "<old string> {0}".format(message)
+    def base_string_template(message):
+        return "<base string> {0}".format(message)
