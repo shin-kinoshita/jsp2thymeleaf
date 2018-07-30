@@ -46,6 +46,6 @@ class FormatNumberDef(AbsTagDef):
         elif "." in pattern_val and "0" in pattern_val:
             integer_count = pattern_val.split(".")[0].count("0")
             decimal_count = pattern_val.split(".")[1].count("0")
-            new_string = NavigableString("${{#numbers.formatInteger({0}, {1}, {2})}}".format(value_val, integer_count, decimal_count))
+            new_string = NavigableString("${{#numbers.formatDecimal({0}, {1}, {2})}}".format(value_val, integer_count, decimal_count))
 
         self.replace_tag(old_tag, new_string, comment_object)
