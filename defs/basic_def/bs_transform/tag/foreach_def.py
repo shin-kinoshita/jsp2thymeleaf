@@ -27,7 +27,13 @@ class ForeachDef(AbsTagDef):
         var_val = old_tag["var"]
         items_val = old_tag["items"]
 
-        new_tag = Tag(parser, name="div", attrs=[("th:each", "{0} : {1}".format(var_val, items_val))])
+        if old_tag.has_attr("varstatus"):
+            var_status_val = old_tag["varstatus"]
+            attrs = {"th:each": "{0}, {1} : {2}".format(var_val, var_status_val, items_val)}
+        else:
+            attrs = {"th:each": "{0} : {1}".format(var_val, items_val)}
+
+        new_tag = Tag(parser, name="div", attrs=attrs)
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)
