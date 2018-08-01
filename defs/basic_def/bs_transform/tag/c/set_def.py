@@ -3,10 +3,10 @@ import re
 from bs4 import Tag
 
 from common.comment.comment_object import CommentObject
-from .abs_tag_def import AbsTagDef
+from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
-class SetDef(AbsTagDef):
+class CSetDef(AbsTagDef):
     def search_name(self):
         return "c:set"
 
