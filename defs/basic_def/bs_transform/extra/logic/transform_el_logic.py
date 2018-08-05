@@ -7,18 +7,18 @@ from .abs_logic import AbsLogic
 
 
 class TransformElLogic(AbsLogic):
-    def __init__(self):
-        super(TransformElLogic, self).__init__(enable_attr=True, enable_string=True)
+    def __init__(self, comment_level=None):
+        super(TransformElLogic, self).__init__(
+            enable_attr=True,
+            enable_string=True,
+            comment_level=comment_level
+        )
 
     def attr_operation(self, parser, tag, attr_key):
-        comment_object = CommentObject(title="Transform el notation")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(tag)
         comment_object.add_transformation_unreliable_comment(
-            "Check transformed text if base one contains multiple el expressions",
-            '''
-            Multiple el expressions within one attribute value, are not supported.
-            In that case, transformation could not be executed properly.
-            '''
+            "Check transformed text if base one contains multiple el expressions"
         )
 
         attr_val = tag[attr_key]
@@ -38,14 +38,10 @@ class TransformElLogic(AbsLogic):
                 self.replace_attr_val(tag, attr_key, new_attr_val, comment_object)
 
     def string_operation(self, parser, tag, string):
-        comment_object = CommentObject(title="Transform el expression")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_string(string)
         comment_object.add_transformation_unreliable_comment(
-            "Check transformed text if base one contains multiple el expressions",
-            '''
-            Multiple el expressions within one line text, are not supported.
-            In that case, transformation could not be executed properly.
-            '''
+            "Check transformed text if base one contains multiple el expressions"
         )
 
         if isinstance(string, Comment):

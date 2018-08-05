@@ -5,6 +5,9 @@ from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
 class HtmlOptionDef(AbsTagDef):
+    def __init__(self, comment_level=None):
+        super(HtmlOptionDef, self).__init__(comment_level=comment_level)
+
     def search_name(self):
         return "html:option"
 
@@ -15,7 +18,7 @@ class HtmlOptionDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
-        comment_object = CommentObject(title="html:option")
+        comment_object = CommentObject(title=self.comment_level, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
 
         attrs = old_tag.attrs

@@ -5,6 +5,9 @@ from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
 class CForeachDef(AbsTagDef):
+    def __init__(self, comment_level=None):
+        super(CForeachDef, self).__init__(comment_level=comment_level)
+
     def search_name(self):
         return "c:foreach"
 
@@ -15,7 +18,7 @@ class CForeachDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
-        comment_object = CommentObject(title="c:foreach")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
 
         if old_tag.has_attr("var") and old_tag.has_attr("items"):

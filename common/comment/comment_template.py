@@ -1,12 +1,8 @@
 
 class CommentTemplate:
     @staticmethod
-    def header_template(message):
-        return "#### jsp2thymeleaf comment: {0}".format(message)
-
-    @staticmethod
-    def footer_template(message):
-        return "#" * len(CommentTemplate.header_template(message))
+    def title_template(message):
+        return "#### jsp2thymeleaf: {0}".format(message)
 
     @staticmethod
     def hint_template(message):

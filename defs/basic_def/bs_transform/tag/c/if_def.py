@@ -5,6 +5,9 @@ from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
 class CIfDef(AbsTagDef):
+    def __init__(self, comment_level=None):
+        super(CIfDef, self).__init__(comment_level=comment_level)
+
     def search_name(self):
         return "c:if"
 
@@ -15,7 +18,7 @@ class CIfDef(AbsTagDef):
         return None
 
     def operate(self, parser, old_tag):
-        comment_object = CommentObject(title="c:if")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
 
         if old_tag.has_attr("test"):

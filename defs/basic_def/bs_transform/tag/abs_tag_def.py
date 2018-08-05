@@ -2,10 +2,16 @@ import re
 
 from abc import ABCMeta, abstractmethod
 
+from common.comment.comment_level import CommentLevel
+
 
 class AbsTagDef(metaclass=ABCMeta):
-    def __init__(self):
-        pass
+    def __init__(self, comment_level=None):
+        self.comment_level = comment_level
+
+        if self.comment_level is None:
+            self.comment_level = CommentLevel.NORMAL
+
 
     def get_search_name(self):
         if self.search_name() is None:
