@@ -33,8 +33,8 @@ bs_tag_def_list = [
    CForeachDef(comment_level=CommentLevel.REDUNDANT),
    CIfDef(comment_level=CommentLevel.REDUNDANT),
    COutDef(comment_level=CommentLevel.NORMAL),
-   CSetDef(comment_level=CommentLevel.ESSENTIAL),
-   FmtFormatNumberDef(comment_level=CommentLevel.ESSENTIAL),
+   CSetDef(comment_level=CommentLevel.NORMAL),
+   FmtFormatNumberDef(comment_level=CommentLevel.NORMAL),
    HtmlOptionDef(comment_level=CommentLevel.NORMAL),
    HtmlSelectDef(comment_level=CommentLevel.NORMAL),
 ]
