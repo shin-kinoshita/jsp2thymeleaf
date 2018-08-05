@@ -11,12 +11,6 @@ class HtmlSelectDef(AbsTagDef):
     def search_name(self):
         return "html:select"
 
-    def search_attrs(self):
-        return {}
-
-    def search_string(self):
-        return None
-
     def operate(self, parser, old_tag):
         comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
