@@ -7,8 +7,13 @@ from .abs_logic import AbsLogic
 
 
 class ToInlineLogic(AbsLogic):
-    def __init__(self):
-        super(ToInlineLogic, self).__init__(enable_attr=False, enable_string=True)
+    def __init__(self, comment_level=None):
+        super(ToInlineLogic, self).__init__(
+            enable_attr=False,
+            enable_string=True,
+            comment_level=comment_level
+        )
+        self.comment_level = comment_level
 
     def string_operation(self, parser, tag, string):
         if isinstance(string, Comment):
@@ -19,7 +24,7 @@ class ToInlineLogic(AbsLogic):
             self.execute(string)
 
     def execute(self, string):
-        comment_object = CommentObject(title="Transform text with inline notation")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_string(string)
 
         new_string = NavigableString(re.sub(r"(.*)\$\{(.*)\}(.*)", r"\1[[${\2}]]\3", string, flags=re.DOTALL))

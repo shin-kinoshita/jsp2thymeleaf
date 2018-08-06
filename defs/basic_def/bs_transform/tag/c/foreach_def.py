@@ -1,21 +1,18 @@
 from bs4 import Tag
 
 from common.comment.comment_object import CommentObject
-from .abs_tag_def import AbsTagDef
+from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
-class ForeachDef(AbsTagDef):
+class CForeachDef(AbsTagDef):
+    def __init__(self, comment_level=None):
+        super(CForeachDef, self).__init__(comment_level=comment_level)
+
     def search_name(self):
         return "c:foreach"
 
-    def search_attrs(self):
-        return {}
-
-    def search_string(self):
-        return None
-
     def operate(self, parser, old_tag):
-        comment_object = CommentObject(title="c:foreach")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
 
         if old_tag.has_attr("var") and old_tag.has_attr("items"):
@@ -27,7 +24,13 @@ class ForeachDef(AbsTagDef):
         var_val = old_tag["var"]
         items_val = old_tag["items"]
 
-        new_tag = Tag(parser, name="div", attrs=[("th:each", "{0} : {1}".format(var_val, items_val))])
+        if old_tag.has_attr("varstatus"):
+            var_status_val = old_tag["varstatus"]
+            attrs = {"th:each": "{0}, {1} : {2}".format(var_val, var_status_val, items_val)}
+        else:
+            attrs = {"th:each": "{0} : {1}".format(var_val, items_val)}
+
+        new_tag = Tag(parser, name="div", attrs=attrs)
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)

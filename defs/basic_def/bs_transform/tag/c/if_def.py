@@ -1,21 +1,18 @@
 from bs4 import Tag
 
 from common.comment.comment_object import CommentObject
-from .abs_tag_def import AbsTagDef
+from defs.basic_def.bs_transform.tag.abs_tag_def import AbsTagDef
 
 
-class IfDef(AbsTagDef):
+class CIfDef(AbsTagDef):
+    def __init__(self, comment_level=None):
+        super(CIfDef, self).__init__(comment_level=comment_level)
+
     def search_name(self):
         return "c:if"
 
-    def search_attrs(self):
-        return {}
-
-    def search_string(self):
-        return None
-
     def operate(self, parser, old_tag):
-        comment_object = CommentObject(title="c:if")
+        comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
         comment_object.set_old_tag(old_tag)
 
         if old_tag.has_attr("test"):

@@ -1,10 +1,16 @@
 from abc import ABCMeta
 
+from common.comment.comment_level import CommentLevel
+
 
 class AbsLogic(metaclass=ABCMeta):
-    def __init__(self, enable_attr=False, enable_string=False):
+    def __init__(self, enable_attr=False, enable_string=False, comment_level=None):
         self.enable_attr = enable_attr
         self.enable_string = enable_string
+        self.comment_level = comment_level
+
+        if self.comment_level is None:
+            self.comment_level = CommentLevel.NORMAL
 
     def attr_operation(self, parser, tag, attr_key):
         raise NotImplementedError

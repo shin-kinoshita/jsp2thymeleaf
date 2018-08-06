@@ -14,9 +14,7 @@ def transform(in_file, out_file):
 def transform_tag(parser):
     for tag_def in bs_transform_def.get_tag_def_list():
         tag_list = parser.find_all(
-            name=tag_def.get_search_name(),
-            attrs=tag_def.get_search_attrs(),
-            string=tag_def.get_search_string()
+            name=tag_def.get_search_name()
         )
         for tag in tag_list:
             tag_def.operate(parser, tag)

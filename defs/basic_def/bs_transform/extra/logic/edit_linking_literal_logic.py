@@ -5,8 +5,12 @@ from .abs_logic import AbsLogic
 
 
 class EditLinkingLiteralLogic(AbsLogic):
-    def __init__(self):
-        super(EditLinkingLiteralLogic, self).__init__(enable_attr=True, enable_string=False)
+    def __init__(self, comment_level=None):
+        super(EditLinkingLiteralLogic, self).__init__(
+            enable_attr=True,
+            enable_string=False,
+            comment_level=comment_level
+        )
 
     def attr_operation(self, parser, tag, attr_key):
         if attr_key == "th:each":
@@ -28,7 +32,7 @@ class EditLinkingLiteralLogic(AbsLogic):
                 else:
                     new_attr_val.append(val)
             if is_replace:
-                comment_object = CommentObject(title="Link literals properly")
+                comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
                 comment_object.set_old_tag(tag)
                 self.replace_attr_val(tag, attr_key, new_attr_val, comment_object)
         else:
@@ -39,7 +43,7 @@ class EditLinkingLiteralLogic(AbsLogic):
             if re.match(r"(.*)\${(.*)}(.*)", attr_val, flags=re.DOTALL):
                 new_attr_val = self.transform_string(attr_val)
 
-                comment_object = CommentObject(title="Link literals properly")
+                comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
                 comment_object.set_old_tag(tag)
                 self.replace_attr_val(tag, attr_key, new_attr_val, comment_object)
 
