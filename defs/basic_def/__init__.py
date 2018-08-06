@@ -15,6 +15,7 @@ from .bs_transform.tag.fmt.format_number_def import FmtFormatNumberDef
 from .bs_transform.tag.html.option_def import HtmlOptionDef
 from .bs_transform.tag.html.select_def import HtmlSelectDef
 
+from .other_transform.logic.escape_inside_tag_logic import EscapeInsideTagLogic
 from .other_transform.logic.transform_comment_logic import TransformCommentLogic
 
 bs_extra_logic_def_list = [
@@ -40,5 +41,6 @@ bs_tag_def_list = [
 ]
 
 other_logic_def_list = [
+   EscapeInsideTagLogic(),
    TransformCommentLogic(),
 ]
