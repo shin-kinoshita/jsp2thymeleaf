@@ -104,11 +104,9 @@ class EscapeInsideTagLogic(AbsLogic):
             return '/&gt;'
         if string == '\'':
             return '&apos;'
-            # return '&#39;'
         if string == '\"':
             return '&quot;'
-            # return '&quot;'
-        if string == '&':
-            return '&amp;'
+        # if string == '&':
+        #     return '&amp;'
         return '\{0}'.format(string)
 
