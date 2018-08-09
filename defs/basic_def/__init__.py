@@ -11,8 +11,10 @@ from .bs_transform.extra.operation.string_operation import StringOperation
 from .bs_transform.tag.c.choose_def import CChooseDef
 from .bs_transform.tag.c.foreach_def import CForeachDef
 from .bs_transform.tag.c.if_def import CIfDef
+from .bs_transform.tag.c.import_def import CImportDef
 from .bs_transform.tag.c.otherwise_def import COtherwiseDef
 from .bs_transform.tag.c.out_def import COutDef
+from .bs_transform.tag.c.param_def import CParamDef
 from .bs_transform.tag.c.set_def import CSetDef
 from .bs_transform.tag.c.when_def import CWhenDef
 from .bs_transform.tag.fmt.format_number_def import FmtFormatNumberDef
@@ -38,8 +40,10 @@ bs_tag_def_list = [
    CChooseDef(comment_level=CommentLevel.NORMAL),
    CForeachDef(comment_level=CommentLevel.REDUNDANT),
    CIfDef(comment_level=CommentLevel.REDUNDANT),
+   CImportDef(comment_level=CommentLevel.NORMAL),
    COtherwiseDef(comment_level=CommentLevel.NORMAL),
    COutDef(comment_level=CommentLevel.NORMAL),
+   CParamDef(comment_level=CommentLevel.NORMAL),
    CSetDef(comment_level=CommentLevel.NORMAL),
    CWhenDef(comment_level=CommentLevel.REDUNDANT),
    FmtFormatNumberDef(comment_level=CommentLevel.NORMAL),
