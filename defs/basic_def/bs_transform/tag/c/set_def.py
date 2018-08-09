@@ -28,7 +28,7 @@ class CSetDef(AbsTagDef):
 
         if not str.isnumeric(value_val) and not re.match(".*\$\{.*\}.*", value_val):
             value_val = "'{0}'".format(value_val)
-        new_tag = Tag(parser, name="div", attrs=[("th:with", "{0}={1}".format(var_val, value_val))])
+        new_tag = Tag(parser, name="th:block", attrs=[("th:with", "{0}={1}".format(var_val, value_val))])
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)

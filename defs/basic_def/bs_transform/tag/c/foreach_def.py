@@ -30,7 +30,7 @@ class CForeachDef(AbsTagDef):
         else:
             attrs = {"th:each": "{0} : {1}".format(var_val, items_val)}
 
-        new_tag = Tag(parser, name="div", attrs=attrs)
+        new_tag = Tag(parser, name="th:block", attrs=attrs)
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)

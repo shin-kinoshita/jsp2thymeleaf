@@ -42,25 +42,8 @@ class EscapeInsideTagLogic(AbsLogic):
                 if symbol in start_symbol_list:
                     is_inside_tag = True
                 out_contents += in_contents[prev_end_index:match_object.start()] + symbol
-
-            # if not is_inside_tag and symbol in start_symbol_list:
-            #     is_inside_tag = True
-            #     out_contents += in_contents[prev_end_index:match_object.start()] + symbol
-            #     continue
-            # elif is_inside_tag and symbol in start_symbol_list:
-            #     inside_tag_count += 1
-            # elif is_inside_tag and symbol in end_symbol_list:
-            #     if inside_tag_count > 0:
-            #         inside_tag_count -= 1
-            #     else:
-            #         is_inside_tag = False
-            #
-            # if is_inside_tag and symbol in escape_symbol_list:
-            #     out_contents += in_contents[prev_end_index:match_object.start()] + self.escape(symbol)
             prev_end_index = match_object.end()
-
         out_contents += in_contents[prev_end_index:]
-
         return out_contents
 
     def find_match_object_list(self, symbol, string):

@@ -21,7 +21,7 @@ class COutDef(AbsTagDef):
     def operate_value(self, parser, old_tag, comment_object):
         value_val = old_tag.attrs["value"]
 
-        new_tag = Tag(parser, name="div", attrs=[("th:text", value_val)])
+        new_tag = Tag(parser, name="th:block", attrs=[("th:text", value_val)])
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)

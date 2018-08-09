@@ -21,7 +21,7 @@ class CIfDef(AbsTagDef):
     def operate_test(self, parser, old_tag, comment_object):
         test_val = old_tag["test"]
 
-        new_tag = Tag(parser, name="div", attrs=[("th:if", test_val)])
+        new_tag = Tag(parser, name="th:block", attrs=[("th:if", test_val)])
         new_tag.contents = old_tag.contents
 
         self.replace_tag(old_tag, new_tag, comment_object)
