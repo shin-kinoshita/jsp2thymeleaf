@@ -10,6 +10,6 @@ class StringOperation(AbsOperation):
                 continue
             string_list = parser.find_all(string=True)
             for string in string_list:
-                logic.string_operation(parser, string.parent, string)
+                logic.call_string_operation(parser, string.parent, string)
             parser = BeautifulSoup(parser.renderContents(), "html.parser")
         return parser

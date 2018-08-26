@@ -14,12 +14,9 @@ class TransformElLogic(AbsLogic):
             comment_level=comment_level
         )
 
-    def attr_operation(self, parser, tag, attr_key):
-        self.tag = tag
-        self.attr_key = attr_key
-        self.attr_val = tag[attr_key]
+    def attr_operation(self):
         comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
-        comment_object.set_old_tag(tag)
+        comment_object.set_old_tag(self.tag)
         comment_object.add_transformation_unreliable_comment(
             "Check transformed text if base one contains multiple el expressions"
         )
@@ -45,7 +42,7 @@ class TransformElLogic(AbsLogic):
                     val = method(val)
                 new_attr_val.append(val)
             if is_replace:
-                self.replace_attr_val(self.tag, self.attr_key, new_attr_val, comment_object)
+                self.replace_attr_val(new_attr_val, comment_object)
 
     def attr_non_list_type_operation(self, transform_info_list, comment_object):
         for transform_info in transform_info_list:
@@ -54,16 +51,16 @@ class TransformElLogic(AbsLogic):
 
             if re.match(pattern, self.attr_val):
                 new_attr_val = method(self.attr_val)
-                self.replace_attr_val(self.tag, self.attr_key, new_attr_val, comment_object)
+                self.replace_attr_val(new_attr_val, comment_object)
 
-    def string_operation(self, parser, tag, string):
+    def string_operation(self):
         comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
-        comment_object.set_old_string(string)
+        comment_object.set_old_string(self.string)
         comment_object.add_transformation_unreliable_comment(
             "Check transformed text if base one contains multiple el expressions"
         )
 
-        if isinstance(string, Comment):
+        if isinstance(self.string, Comment):
             return
 
         transform_info_list = [
@@ -72,8 +69,8 @@ class TransformElLogic(AbsLogic):
         for transform_info in transform_info_list:
             pattern = transform_info['pattern']
             method = transform_info['method']
-            if re.match(pattern, string, flags=re.DOTALL):
-                self.replace_string(string, method(string), comment_object)
+            if re.match(pattern, self.string, flags=re.DOTALL):
+                self.replace_string(method(self.string), comment_object)
 
     def transform_f_h(self, text):
         return NavigableString(re.sub(r"(.*)\$\{(.*)f:h\((.*)\)(.*)\}(.*)", r"\1${\2\3\4}\5", text, flags=re.DOTALL))

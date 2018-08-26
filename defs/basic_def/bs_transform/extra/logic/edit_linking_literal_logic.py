@@ -12,15 +12,14 @@ class EditLinkingLiteralLogic(AbsLogic):
             comment_level=comment_level
         )
 
-    def attr_operation(self, parser, tag, attr_key):
-        if attr_key == "th:each":
+    def attr_operation(self):
+        if self.attr_key == "th:each":
             return
 
-        attr_val = tag[attr_key]
-        if isinstance(attr_val, list):
+        if isinstance(self.attr_val, list):
             is_replace = False
             new_attr_val = list()
-            for val in attr_val:
+            for val in self.attr_val:
                 if re.match(r"(.*)\|(.*)\|(.*)", val, flags=re.DOTALL):
                     new_attr_val.append(val)
                 elif re.match(r"\${(.*)}", val, flags=re.DOTALL):
@@ -33,19 +32,19 @@ class EditLinkingLiteralLogic(AbsLogic):
                     new_attr_val.append(val)
             if is_replace:
                 comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
-                comment_object.set_old_tag(tag)
-                self.replace_attr_val(tag, attr_key, new_attr_val, comment_object)
+                comment_object.set_old_tag(self.tag)
+                self.replace_attr_val(new_attr_val, comment_object)
         else:
-            if re.match(r"(.*)\|(.*)\|(.*)", attr_val, flags=re.DOTALL):
+            if re.match(r"(.*)\|(.*)\|(.*)", self.attr_val, flags=re.DOTALL):
                 return
-            if re.match(r"\${(.*)}", attr_val, flags=re.DOTALL):
+            if re.match(r"\${(.*)}", self.attr_val, flags=re.DOTALL):
                 return
-            if re.match(r"(.*)\${(.*)}(.*)", attr_val, flags=re.DOTALL):
-                new_attr_val = self.transform_string(attr_val)
+            if re.match(r"(.*)\${(.*)}(.*)", self.attr_val, flags=re.DOTALL):
+                new_attr_val = self.transform_string(self.attr_val)
 
                 comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
-                comment_object.set_old_tag(tag)
-                self.replace_attr_val(tag, attr_key, new_attr_val, comment_object)
+                comment_object.set_old_tag(self.tag)
+                self.replace_attr_val(new_attr_val, comment_object)
 
     def transform_string(self, string):
         string_list = re.sub(r"(.*)\${(.*)}(.*)", r"'\1',${\2},'\3'", string, flags=re.DOTALL).split(",")
