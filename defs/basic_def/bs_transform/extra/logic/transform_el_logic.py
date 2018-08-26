@@ -15,10 +15,15 @@ class TransformElLogic(AbsLogic):
         )
 
         self.transform_info_list = [
-            {'pattern': r"(.*)\$\{f:h\((.*)\)\}(.*)", 'method': self.transform_f_h},
-            {'pattern': r"(.*)\$\{f:br\((.*)\)\}(.*)", 'method': self.transform_f_br},
+            {
+                'pattern_list': [r"(.*)\$\{f:h\((.*)\)\}(.*)"],
+                'method': self.transform_f_h
+            },
+            {
+                'pattern_list': [r"(.*)\$\{f:br\((.*)\)\}(.*)"],
+                'method': self.transform_f_br
+            },
         ]
-
 
     def attr_operation(self):
         comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
@@ -34,27 +39,29 @@ class TransformElLogic(AbsLogic):
 
     def attr_list_type_operation(self, transform_info_list, comment_object):
         for transform_info in transform_info_list:
-            pattern = transform_info['pattern']
+            pattern_list = transform_info['pattern_list']
             method = transform_info['method']
 
-            is_replace = False
-            new_attr_val = list()
-            for i, val in enumerate(self.attr_val):
-                if re.match(pattern, val):
-                    is_replace = True
-                    val = method(val)
-                new_attr_val.append(val)
-            if is_replace:
-                self.replace_attr_val(new_attr_val, comment_object)
+            for pattern in pattern_list:
+                is_replace = False
+                new_attr_val = list()
+                for i, val in enumerate(self.attr_val):
+                    if re.match(pattern, val):
+                        is_replace = True
+                        val = method(val)
+                    new_attr_val.append(val)
+                if is_replace:
+                    self.replace_attr_val(new_attr_val, comment_object)
 
     def attr_non_list_type_operation(self, transform_info_list, comment_object):
         for transform_info in transform_info_list:
-            pattern = transform_info['pattern']
+            pattern_list = transform_info['pattern_list']
             method = transform_info['method']
 
-            if re.match(pattern, self.attr_val):
-                new_attr_val = method(self.attr_val)
-                self.replace_attr_val(new_attr_val, comment_object)
+            for pattern in pattern_list:
+                if re.match(pattern, self.attr_val):
+                    new_attr_val = method(self.attr_val)
+                    self.replace_attr_val(new_attr_val, comment_object)
 
     def string_operation(self):
         comment_object = CommentObject(title=self.__class__.__name__, default_level=self.comment_level)
@@ -67,13 +74,15 @@ class TransformElLogic(AbsLogic):
             return
 
         for transform_info in self.transform_info_list:
-            pattern = transform_info['pattern']
+            pattern_list = transform_info['pattern_list']
             method = transform_info['method']
-            if re.match(pattern, self.string, flags=re.DOTALL):
-                self.replace_string(method(self.string), comment_object)
+            for pattern in pattern_list:
+                if re.match(pattern, self.string, flags=re.DOTALL):
+                    self.replace_string(method(self.string), comment_object)
 
     def transform_f_h(self, text):
-        return NavigableString(re.sub(r"(.*)\$\{f:h\((.*)\)\}(.*)", r"\1${\2}\3", text, flags=re.DOTALL))
+        pattern = r"(.*)\$\{f:h\((.*)\)\}(.*)"
+        return NavigableString(re.sub(pattern, r"\1${\2}\3", text, flags=re.DOTALL))
 
     def transform_f_br(self, text):
         pattern = r"(.*)\$\{f:br\((.*)\)\}(.*)"
