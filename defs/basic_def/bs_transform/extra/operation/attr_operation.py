@@ -12,6 +12,6 @@ class AttrOperation(AbsOperation):
             for tag in tag_list:
                 attr_key_list = tag.attrs.keys()
                 for attr_key in attr_key_list:
-                        logic.attr_operation(parser, tag, attr_key)
+                    logic.attr_operation(parser, tag, attr_key)
             parser = BeautifulSoup(parser.renderContents(), "html.parser")
         return parser
