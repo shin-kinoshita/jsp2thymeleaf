@@ -93,10 +93,10 @@ class TransformElLogic(AbsLogic):
         loop_tag = Tag(
             self.parser,
             name="th:block",
-            attrs={"th:each": "str, stat : ${{{0}.split('\\r\\n|\\r|\\n', -1)}}".format(sentence)}
+            attrs={"th:each": "str, status : ${{{0}.split('\\r\\n|\\r|\\n', -1)}}".format(sentence)}
         )
         loop_tag.append(NavigableString("[[${{str}}]]"))
-        loop_tag.append(Tag(self.parser, name="br", attrs={"th:if": "${{!str.last}}"}))
+        loop_tag.append(Tag(self.parser, name="br", attrs={"th:if": "${{!status.last}}"}))
 
         sentence_tag = Tag(self.parser, name="th:block", attrs={"th:if": "${{{0}}}".format(sentence)})
         sentence_tag.append(loop_tag)
